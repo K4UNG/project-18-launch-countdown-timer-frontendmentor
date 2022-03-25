@@ -268,7 +268,7 @@ h1 {
 
 footer {
     position: absolute;
-    bottom: 150px;
+    bottom: 100px;
 }
 
 footer ul {
@@ -291,7 +291,6 @@ footer a:hover svg {
         --fs-800: 4.5rem;
 
         --card-height: 130px;
-        --edge-size: 17px;
         --border: .6rem;
     }
 
