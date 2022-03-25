@@ -1,0 +1,264 @@
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --clr-neutral-100: hsl(0, 0%, 100%);
+    --clr-neutral-700: hsl(236, 21%, 26%);
+    --clr-neutral-800: hsl(235, 16%, 14%);
+    --clr-neutral-900: hsl(234, 17%, 12%);
+
+    --clr-primary-500: hsl(237, 18%, 59%);
+    --clr-primary-400: hsl(345, 95%, 68%);
+
+    --fs-400: .95rem;
+    --fs-600: 1.5rem;
+    --fs-800: 3rem;
+
+    --fw-400: 500;
+    --fw-700: 700;
+}
+
+body {
+    font-family: 'Red Hat Text', sans-serif;
+    min-height: 100vh;
+}
+
+/* utility */
+
+.bg-700 {
+    background: var(--clr-neutral-700);
+}
+
+.bg-800 {
+    background: var(--clr-neutral-800);
+}
+
+.bg-500 {
+    background: var(--clr-primary-500);
+}
+
+.text-100 {
+    color: var(--clr-neutral-100);
+}
+
+.text-300 {
+    color: var(--clr-primary-500);
+}
+
+.text-400 {
+    color: var(--clr-primary-400);
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.padding-32 {
+    padding: 2rem;
+}
+
+.fw-700 {
+    font-weight: var(--fw-700);
+}
+
+.fw-400 {
+    font-weight: var(--fw-400);
+}
+
+.fs-800 {
+    font-size: var(--fs-800);
+}
+
+.upper {
+    text-transform: uppercase;
+}
+
+/* block */
+
+main {
+    width: 100%;
+    max-width: 460px;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    padding: 5em 1em;
+}
+
+h1 {
+    text-align: center;
+    font-size: var(--fs-600);
+    letter-spacing: 3px;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    grid-auto-columns: 1fr;
+    gap: .5em
+}
+
+.container-sub {
+    height: 90px;
+    border-radius: .5rem;
+    position: relative;
+}
+
+.container-sub::after {
+    content: '';
+    background: var(--clr-neutral-900);
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 10px;
+    position: absolute;
+    z-index: -1;
+    border-radius: 1rem;
+}
+
+.span {
+    width: 100%;
+    height: 15px;
+    overflow: hidden;
+    position: absolute;
+    bottom: 50%;
+    transform: translateY(50%);
+}
+
+.span span {
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    background: var(--clr-neutral-900);
+    top: 0;
+    border-radius: .5rem;
+}
+
+.span span:first-child {
+    left: 0;
+    transform: translateX(-50%);
+}
+
+.span span:last-child {
+    right: 0;
+    transform: translateX(50%);
+}
+
+.clock {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    user-select: none;
+    perspective: 400px;
+}
+
+.clock:hover .card {
+    transform: rotateX(-180deg);
+}
+
+.clock::after,
+.clock::before {
+    display: flex;
+    justify-content: center;
+    height: 50%;
+    position: absolute;
+    line-height: 0;
+    width: 100%;
+    overflow: hidden;
+}
+
+.clock::before {
+    content: attr(data-before);
+    bottom: 0;
+    align-items: flex-start;
+}
+
+.clock::after {
+    content: attr(data-after);
+    top: 0;
+    align-items: flex-end;
+}
+
+.card {
+    width: 100%;
+    height: 50%;
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    transform-style: preserve-3d;
+    transform-origin: bottom;
+    transition: transform .3s;
+}
+
+.front,
+.back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    line-height: 0;
+    overflow: hidden;
+    backface-visibility: hidden;
+}
+
+.front {
+    align-items: flex-end;
+    border-top-left-radius: .5rem;
+    border-bottom: 1px solid black;
+    border-top-right-radius: .5rem;
+}
+
+.front::before,
+.front::after,
+.back::before,
+.back::after {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background: var(--clr-neutral-900);
+    border-radius: 50%;
+}
+
+.front::before {
+    bottom: 0;
+    left: 0;
+    transform: translate(-50%, 50%);
+}
+
+.front::after {
+    bottom: 0;
+    right: 0;
+    transform: translate(50%, 50%);
+}
+
+.back::before {
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%);
+}
+
+.back::after {
+    top: 0;
+    right: 0;
+    transform: translate(50%, -50%);
+}
+
+.back {
+    transform: rotateX(-180deg);
+    border-bottom-left-radius: .5rem;
+    border-bottom-right-radius: .5rem;
+    border-top: 1px solid black;
+}
