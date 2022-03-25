@@ -12,7 +12,8 @@
     --clr-neutral-100: hsl(0, 0%, 100%);
     --clr-neutral-700: hsl(236, 21%, 26%);
     --clr-neutral-750: hsl(240, 22%, 21%);
-    --clr-neutral-750-shade: hsl(235, 21%, 12%);
+    --clr-neutral-750-shade: red;
+    /* --clr-neutral-750-shade: hsl(235, 21%, 12%); */
     --clr-neutral-800: hsl(235, 16%, 14%);
     --clr-neutral-900: hsl(234, 17%, 12%);
 
@@ -142,7 +143,6 @@ h1 {
     position: absolute;
     overflow: hidden;
     background-color: var(--clr-neutral-700);
-    transition: background-color .3s;
 }
 
 .clock::before {
@@ -151,6 +151,7 @@ h1 {
     align-items: flex-start;
     border-bottom-left-radius: .3rem;
     border-bottom-right-radius: .3rem;
+    border-top: 1px solid black;
 }
 
 .clock::after {
@@ -160,6 +161,44 @@ h1 {
     border-top-left-radius: .3rem;
     border-top-right-radius: .3rem;
     background-color: var(--clr-neutral-750);
+    border-bottom: 1px solid black;
+}
+
+.flip.clock::before {
+    animation: color .6s;
+}
+
+.flip .front {
+    animation: color .6s;
+}
+
+@keyframes color {
+    to {
+        background-color: var(--clr-neutral-750-shade);
+    }
+}
+
+.flip .card {
+    animation: flip .6s;
+}
+
+@keyframes flip {
+    60% {
+        transform: rotateX(-180deg);
+    }
+
+    80% {
+        -o-animation-timing-function: ease-out;
+        transform: rotateX(-160deg);
+    }
+
+    90% {
+        transform: rotateX(-175deg);
+    }
+
+    100% {
+        transform: rotateX(-180deg);
+    }
 }
 
 .card {
@@ -169,7 +208,6 @@ h1 {
     z-index: 10;
     transform-origin: bottom;
     transform-style: preserve-3d;
-    transition: .5s;
 }
 
 .front,
@@ -183,7 +221,6 @@ h1 {
     overflow: hidden;
     backface-visibility: hidden;
     background-color: var(--clr-neutral-700);
-    transition: background-color .5s;
 }
 
 .front {
@@ -199,17 +236,6 @@ h1 {
     border-bottom-left-radius: .3rem;
     border-bottom-right-radius: .3rem;
     border-top: 1px solid black;
-}
-
-.container:hover .card {
-    transform: rotateX(-180deg);
-}
-
-.container:hover .front {
-    background-color: var(--clr-neutral-750-shade);
-}
-.container:hover .clock::before {
-    background-color: var(--clr-neutral-750);
 }
 
 .front::before,
