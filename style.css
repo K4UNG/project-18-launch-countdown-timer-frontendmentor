@@ -165,7 +165,6 @@ h1 {
     align-items: flex-start;
     border-bottom-left-radius: var(--border);
     border-bottom-right-radius: var(--border);
-    border-top: 1px solid black;
 }
 
 .clock::after {
@@ -174,8 +173,8 @@ h1 {
     align-items: flex-end;
     border-top-left-radius: var(--border);
     border-top-right-radius: var(--border);
-    border-bottom: 1px solid black;
     filter: brightness(85%);
+    border-bottom: 1px solid black;
 }
 
 .flip .card {
@@ -227,7 +226,6 @@ h1 {
     transform: rotateX(180deg);
     border-bottom-left-radius: var(--border);
     border-bottom-right-radius: var(--border);
-    border-top: 1px solid black;
 }
 
 .front::before,
